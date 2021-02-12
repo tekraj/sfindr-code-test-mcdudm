@@ -8,9 +8,10 @@ import { Test1Component } from "./test1/test1.component";
 import { Test2Component } from "./test2/test2.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { HomeComponent } from "./home/home.component";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
-  imports: [BrowserModule, FormsModule,ReactiveFormsModule, AppRoutingModule],
+  imports: [BrowserModule, FormsModule,ReactiveFormsModule, AppRoutingModule, HttpClientModule],
   declarations: [
     AppComponent,
     HelloComponent,
