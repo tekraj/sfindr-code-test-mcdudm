@@ -25,33 +25,26 @@
 	A submit button should log the value of the form to the console, but should
 	only be enabled if the form is valid.
 </p>
-
-<form>
-	<div>
-		Name:
-		<input />
-  </div>
-
-		<div>
-			Type:
-			<select>
-      <option></option>
-      <option value="car">Car</option>
-      <option value="bike">Bike</option>
-    </select>
+<div class="form-container">
+	<form [formGroup]="test1FormGroup" novalidate>
+		<div class="form-group" *ngFor="let field of formFields">
+			<label [for]="field.name">{{field.label}}</label>
+      <ng-container *ngIf="field.fieldType==='text'">
+			  <input [type]="field.fieldType" [id]="field.name" [formControlName]="field.name" class="form-control">
+      </ng-container>
+       <ng-container *ngIf="field.fieldType==='select'">
+			  <select  [id]="field.name" [formControlName]="field.name" class="form-control">
+          <option value="">Please Select</option>
+          <ng-container *ngIf="field.options">
+            <option *ngFor="let opt of field.options" [value]="opt.value">{{opt.name}}</option>
+          </ng-container>
+        </select>
+      </ng-container>
+			<div *ngIf="test1FormGroup.controls[field.name].touched &&
+               test1FormGroup.controls[field.name].invalid" class="alert-danger">
+				<span *ngIf="test1FormGroup.controls[field.name].errors.required">This Field is required*</span>
+			</div>
 		</div>
-
-		<div *ngIf="true">
-			<!-- only show if "type" is "car" -->
-			Brand:
-			<input />
-  </div>
-
-			<div *ngIf="true">
-				<!-- only show if "type" is "bike" -->
-				Color:
-				<input />
-  </div>
-
-				<button>Submit</button>
-</form>
+		<button [disabled]="!test1FormGroup.valid" type="submit" class="btn btn-primary">Submit</button>
+	</form>
+</div>
