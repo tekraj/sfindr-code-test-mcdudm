@@ -1,4 +1,4 @@
-export interface FormField {
+export interface IFormField {
   fieldType: string;
   name: string;
   default: string;
@@ -6,4 +6,8 @@ export interface FormField {
   options: { name: string; value: string }[];
   label: string;
   order: number;
+  onChangeAddField: boolean;
+  dependsOn?: string;
+  showOn?: string;
+  changedFields?: IFormField[];
 }
