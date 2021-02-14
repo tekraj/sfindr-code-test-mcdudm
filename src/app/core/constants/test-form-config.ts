@@ -31,7 +31,7 @@ export const TESTFORMCONFIG = [
         order: 3,
         onChangeAddField: false,
         dependsOn : 'vehicleType',
-        showOn: "car"
+        showOn: "bike"
       },
       {
         fieldType: "text",
@@ -43,7 +43,7 @@ export const TESTFORMCONFIG = [
         order: 4,
         onChangeAddField: false,
          dependsOn : 'vehicleType',
-        showOn: "bike"
+        showOn: "car"
       }
     ]
   }
